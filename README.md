@@ -1,7 +1,7 @@
-This repository is an example failure project for bundler/bundler#3549
+This repository is an example failure project for [bundler/bundler#3549](https://github.com/bundler/bundler/issues/3549)
 
 #### Description of Problem
-With commit bundler/bundler@f740c40598142d990d59e129293c22c5d6f980b7 , a generic `rescue` block is wrapped around the `Kernel.require` line which loads your libraries. This block only outputs warning and debug text to `Bundler.ui`, which is [NOT VISIBLE by default](https://github.com/bundler/bundler/blob/c8c7d58a6628097bbe58dd47c11b5e9dc25c897a/lib/bundler.rb#L95-L97).
+With commit [bundler/bundler@f740c40598142d990d59e129293c22c5d6f980b7](https://github.com/bundler/bundler/commit/f740c40598142d990d59e129293c22c5d6f980b7), a generic `rescue` block is wrapped around the `Kernel.require` line which loads your libraries. This block only outputs warning and debug text to `Bundler.ui`, which is [NOT VISIBLE by default](https://github.com/bundler/bundler/blob/c8c7d58a6628097bbe58dd47c11b5e9dc25c897a/lib/bundler.rb#L95-L97).
 
 So, if the file being required throws any error inheriting from `StandardError` (most errors), the error is by default silently ignored and the file isn't loaded. This gives you confusing, unrelated errors that tell you nothing about the actual problem.
 
