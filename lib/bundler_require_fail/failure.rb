@@ -1,0 +1,2 @@
+class BundlerRequireFail_WHOOPS_TYPO::Failure
+end
